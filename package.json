@@ -5,6 +5,7 @@
     "start": "node index.js"
   },
   "dependencies": {
+    "dotenv": "^5.0.1",
     "express": "^4.16.2",
     "favicon": "0.0.2",
     "http": "0.0.0",

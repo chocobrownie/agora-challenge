@@ -1,7 +1,12 @@
 var http = require('http');
 var express = require('express');
 var favicon = require('serve-favicon');
+var dotenv = require('dotenv');
 
+dotenv.load();
+
+console.log(process.env.APP_ID);
+console.log(process.env.PORT);
 var PORT = process.env.PORT || 8080;
 
 // Verify that the API Key and API Secret are defined
