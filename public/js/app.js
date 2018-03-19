@@ -1,6 +1,7 @@
 var client, localuid, localStream, remoteStream, screenSharingStream, camera, microphone;
 var audioMute = false;
 var videoMute = false;
+var parallelView = false;
 
 $(document).ready(function() {
   if(!AgoraRTC.checkSystemRequirements()) {
@@ -187,4 +188,25 @@ function registerPeerMuteAudioVideoEventHandler() {
     var peeruid = evt.uid;
     console.log("unmute video:" + peeruid);
   });
+}
+// Tutorial Step 14
+function onViewButtonClicked() {
+  parallelView = !parallelView;
+  let remote = document.getElementById('remote-video');
+  let local = document.getElementById('local-video');
+  let button = document.getElementById('switchview-button');
+  if (parallelView) {
+    local.classList.add('parallelViewLocal');
+    local.classList.remove('normalViewLocal');
+    remote.classList.add('parallelViewRemote');
+    remote.classList.remove('normalViewRemote');
+    button.src = 'images/normalView.png';
+  }else {
+    local.classList.remove('parallelViewLocal');
+    local.classList.add('normalViewLocal');
+    remote.classList.remove('parallelViewRemote');
+    remote.classList.add('normalViewRemote');
+    local.classList.remove('parallelView');
+    button.src = 'images/parallelView.png';
+  }
 }

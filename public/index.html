@@ -13,7 +13,7 @@
 <body>
 
     <div id="videos">
-        <div id="remote-video"></div>
+        <div id="remote-video" class="normalViewRemote"></div>
         <div id="toolbar" class=flex-container>
             <div class ="image-container">
                 <input id="video-mute-button" class="circle-button" type="image" src="images/cameraoff.png" onClick="onVideoMuteButtonClicked()">
@@ -24,8 +24,11 @@
             <div class ="image-container">
                 <input id="endcall-button" class="circle-button" type="image" src="images/hangup.png" onclick="onEndCallButtonClicked()">
             </div>
+            <div class ="image-container">
+                <input id="switchview-button" class="circle-button" type="image" src="images/parallelView.png" onclick="onViewButtonClicked()">
+            </div>
         </div>
-        <div id="local-video"></div>
+        <div id="local-video" class="normalViewLocal"></div>
     </div>
 </body>
 
