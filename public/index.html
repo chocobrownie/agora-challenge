@@ -13,7 +13,9 @@
 <body>
 
     <div id="videos">
-        <div id="remote-video" class="normalViewRemote"></div>
+        <div id="remote-video" class="normalViewRemote">
+          <img src="images/cameraoffvideo.png" id="mute-video" style="display:none;position:absolute;z-index:200;">
+        </div>
         <div id="toolbar" class=flex-container>
             <div class ="image-container">
                 <input id="video-mute-button" class="circle-button" type="image" src="images/cameraoff.png" onClick="onVideoMuteButtonClicked()">

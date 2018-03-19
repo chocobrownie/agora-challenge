@@ -16,7 +16,12 @@ body, html {
     position: absolute;
     z-index: 10;
 }
-
+#mute-video {
+  position: absolute;
+  width: 30%;
+  left: 35%;
+  top:35%;
+}
 #toolbar {
     display: -moz-flex;
     display: -ms-flex;

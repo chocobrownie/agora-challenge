@@ -183,10 +183,12 @@ function registerPeerMuteAudioVideoEventHandler() {
     client.on('mute-video', function (evt) {
     var peeruid = evt.uid;
     console.log("mute video" + peeruid);
+    document.getElementById('mute-video').style.display='block';
   });
   client.on('unmute-video', function (evt) {
     var peeruid = evt.uid;
     console.log("unmute video:" + peeruid);
+    document.getElementById('mute-video').style.display='none';
   });
 }
 // Tutorial Step 14
