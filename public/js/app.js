@@ -2,6 +2,9 @@ var client, localuid, localStream, remoteStream, screenSharingStream, camera, mi
 var audioMute = false;
 var videoMute = false;
 var parallelView = false;
+var options = {};
+var hideScreenShareModal;
+var localuid;
 
 $(document).ready(function() {
   if(!AgoraRTC.checkSystemRequirements()) {
@@ -50,7 +53,14 @@ function joinChannel() {
 
 // Tutorial Step 3
 function initializeLocalStream() {
-  localStream = AgoraRTC.createStream({streamID: localuid, audio: true, video: true, screen: false});
+  options = {
+    streamID: localuid, 
+    audio: true, 
+    video: true, 
+    screen: false,
+    extensionId: 'minllpmhdgpndnkomcoccfekfegnlikg'
+  }
+  localStream = AgoraRTC.createStream(options);
   localStream.setVideoProfile('720p_3');
 
   localStream.init(function() {
@@ -212,3 +222,37 @@ function onViewButtonClicked() {
     button.src = 'images/parallelView.png';
   }
 }
+// Tutorial Step 15
+function onScreenShareButtonClicked() {
+  console.log('share');
+  //localStream.disableVideo();
+  options.audio = false;
+  options.video = false;
+  options.screen = true;
+  localStream = AgoraRTC.createStream(options);
+  localStream.setVideoProfile('720p_3');
+  localStream.init(function() {
+      console.log("Local stream initialized");
+
+      publishLocalStream(); // Tutorial Step 4
+      renderLocalStream(); // Tutorial Step 5
+
+  }, function(err) {
+      console.log("Local stream initialization failed", err);
+      document.getElementById('screen-extension-modal').style.display = 'block';
+      hideScreenShareModal = () => {
+        document.getElementById('screen-extension-modal').style.display = 'none';
+      }
+  });
+
+  // The user has granted access to the camera and mic.
+  localStream.on("accessAllowed", function() {
+    console.log("User has granted camera and microphone access");
+  });
+
+  // The user has denied access to the camera and mic.
+  localStream.on("accessDenied", function() {
+    console.log('access denied with screen sharing');
+  });
+}
+

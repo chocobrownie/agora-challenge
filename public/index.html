@@ -29,8 +29,15 @@
             <div class ="image-container">
                 <input id="switchview-button" class="circle-button" type="image" src="images/parallelView.png" onclick="onViewButtonClicked()">
             </div>
+            <div class ="image-container">
+                <input id="sharescreen-button" class="circle-button" type="image" src="images/screenshare.png" onclick="onScreenShareButtonClicked()">
+            </div>
         </div>
         <div id="local-video" class="normalViewLocal"></div>
+        <div id="screen-extension-modal" style="display:none">
+          <div style="cursor:pointer" onClick="hideScreenShareModal()">&#10006;</div>
+          <p><a target="_blank" href="https://chrome.google.com/webstore/detail/minllpmhdgpndnkomcoccfekfegnlikg">download screen sharing extension</a> to start screen sharing!</p>
+        </div>
     </div>
 </body>
 
